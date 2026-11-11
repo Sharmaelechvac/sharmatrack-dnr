@@ -26,7 +26,7 @@
     { en: "Bathroom vanity boxes", es: "Cajas del tocador del baño", pt: "Caixas da bancada do banheiro" },
     { en: "Laundry & dryer", es: "Lavandería y secadora", pt: "Lavanderia e secadora" },
     { en: "Range & water heater", es: "Estufa y calentador de agua", pt: "Fogão e aquecedor de água" },
-    { en: "HVAC power & disconnects", es: "Energía HVAC y disconnects", pt: "Energia HVAC e disconnects" },
+    { en: "A/C power & disconnects", es: "Energía A/C y disconnects", pt: "Energia A/C e disconnects" },
     { en: "Exterior & garage boxes", es: "Cajas exteriores y del garage", pt: "Caixas externas e da garagem" },
     { en: "Sealed penetrations", es: "Penetraciones selladas", pt: "Penetrações vedadas" }
   ];
@@ -43,7 +43,7 @@
     { en: "Exterior fixtures & floods", es: "Luminarias exteriores y reflectores", pt: "Luminárias externas e refletores" },
     { en: "Smoke & CO detectors installed", es: "Detectores de humo y CO instalados", pt: "Detectores de fumaça e CO instalados" },
     { en: "GFCI / AFCI devices — tested", es: "Dispositivos GFCI / AFCI — probados", pt: "Dispositivos GFCI / AFCI — testados" },
-    { en: "HVAC final connections", es: "Conexiones finales de HVAC", pt: "Conexões finais do HVAC" },
+    { en: "A/C final connections", es: "Conexiones finales de A/C", pt: "Conexões finais do A/C" },
     { en: "Range, dryer & water heater — final connections", es: "Estufa, secadora y calentador de agua — conexiones finales", pt: "Fogão, secadora e aquecedor de água — conexões finais" },
     { en: "Final walkthrough — plates on, covers clean", es: "Recorrido final — placas puestas, tapas limpias", pt: "Vistoria final — espelhos colocados, tampas limpas" }
   ];
@@ -220,10 +220,11 @@
   if (!UI[lang]) lang = "en";
   var trade = localStorage.getItem("crew-trade-" + JOB.id) || "elec";
   var phase = localStorage.getItem("crew-phase-" + JOB.id) || JOB.phase || "rough";
-  if (phase === "hvac") { trade = "hvac"; phase = "hrough"; }
-  if (["rough", "trim", "tug", "ug", "hrough", "htrim", "hstart"].indexOf(phase) < 0) phase = "rough";
-  if (phase === "hrough" || phase === "htrim" || phase === "hstart") trade = "hvac";
-  if (trade !== "elec" && trade !== "hvac") trade = "elec";
+  /* Mukherjee is an electrical-only job (Sanjay, 2026-11-10): force the
+     electric trade; any stored HVAC phase from the brief both-trades build
+     falls back to the job's default phase instead of a removed section. */
+  if (["rough", "trim", "tug", "ug"].indexOf(phase) < 0) phase = ["ug", "tug", "rough", "trim"].indexOf(JOB.phase) >= 0 ? JOB.phase : "rough";
+  trade = "elec";
   var photos = []; // metadata records from GET /api/photos?job=<id>
   var seeds = [];  // migrated photos shipped with the site (seed-photos.json); display-only, never uploaded or deleted
   var jobMeta = {}; // record from GET /api/jobmeta?job=<id>
