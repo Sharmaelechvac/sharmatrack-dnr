@@ -4,7 +4,9 @@
 <title>SHARMATRACK — 4008 W El Prado Blvd</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css?v=23">
+<link rel="stylesheet" href="docs.css?v=1">
 <link rel="icon" href="../sharmatrack-app-icon.png">
 <link rel="apple-touch-icon" href="../sharmatrack-app-icon.png">
 <script>try{if(localStorage.getItem("sharma-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
@@ -76,6 +78,12 @@
     <h3 data-i18n="prints">PRINTS</h3>
     <a href="https://sharma-crew.sharma-crew.workers.dev/prints/Mukherjee-Electrical-DRAFT.pdf" target="_blank" rel="noopener">Electrical Set v3.1 — DRAFT – NOT FOR CONSTRUCTION</a>
     <a href="https://sharma-crew.sharma-crew.workers.dev/prints/Mukherjee-Architect-Plans.pdf" target="_blank" rel="noopener">Architect master plans</a>
+  </div>
+
+  <div class="docs" id="documents">
+    <h2 class="docs-h">DOCUMENTS — ELECTRICAL</h2>
+    <p class="docs-sub">Job documents for the Mukherjee Residence — Electrical only. Newest first.</p>
+    <div id="docs-root"><p class="docs-empty">Loading documents…</p></div>
   </div>
 
   <div id="elec-details">
@@ -342,4 +350,5 @@
 </div></div>
 <script>window.JOB_PAGE = { id: "mukherjee", address: "4008 W El Prado Blvd, Tampa, FL 33629", phase: "ug" };</script>
 <script src="../app.js?v=31"></script>
+<script src="docs.js?v=1"></script>
 </body></html>
