@@ -204,7 +204,7 @@
   if (!jobEl) return; // only job pages run this script's render logic
   var JOB = window.JOB_PAGE || {};
   var themeBtn = document.querySelector(".theme-toggle");
-  function paintThemeBtn() { if (themeBtn) themeBtn.textContent = document.documentElement.getAttribute("data-theme") === "dark" ? "☀️ White" : "🌙 Dark"; }
+  function paintThemeBtn() { if (themeBtn) themeBtn.textContent = document.documentElement.getAttribute("data-theme") === "dark" ? "White" : "Dark"; }
   if (themeBtn) themeBtn.addEventListener("click", function () {
     if (document.documentElement.getAttribute("data-theme") === "dark") {
       document.documentElement.removeAttribute("data-theme");
