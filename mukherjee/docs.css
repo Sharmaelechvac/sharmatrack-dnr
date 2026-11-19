@@ -50,3 +50,51 @@
 .docs-item .docs-title { display: block; font-size: 17px; font-weight: 600; color: #1a2f61; }
 .docs-item .docs-meta { display: block; font-size: 16px; color: #5b6478; margin-top: 2px; word-break: break-all; }
 .docs-empty { font-size: 16px; color: #5b6478; margin: 0 0 8px; }
+
+/* Phase 1 v2: encrypted documents — lock panel + button entries. */
+button.docs-item { font: inherit; text-align: left; width: 100%; cursor: pointer; }
+button.docs-item:focus-visible { outline: 3px solid #F0A846; outline-offset: 1px; }
+button.docs-item[disabled] { opacity: .65; cursor: default; }
+.docs-note { font-size: 16px; color: #5b6478; margin: 10px 0 4px; }
+.docs-lock { margin-top: 14px; max-width: 560px; }
+.docs-lock-p { font-size: 16px; color: #5b6478; margin: 0 0 14px; }
+.docs-lock-label {
+  display: block;
+  font-family: "Barlow Semi Condensed", Inter, sans-serif;
+  font-weight: 700; font-size: 16px; letter-spacing: .04em;
+  text-transform: uppercase; color: #1a2f61; margin-bottom: 6px;
+}
+.docs-lock-input {
+  box-sizing: border-box; width: 100%; min-height: 56px;
+  padding: 8px 12px; border: 1px solid #5b6478; border-radius: 4px;
+  background: #fff; color: #1d2433;
+  font-family: "IBM Plex Mono", Menlo, Consolas, monospace;
+  font-size: 24px; font-weight: 600; letter-spacing: .3em;
+  -webkit-appearance: none; appearance: none;
+}
+.docs-lock-input:focus { outline: 3px solid #F0A846; outline-offset: 1px; border-color: #1a2f61; }
+.docs-unlock {
+  box-sizing: border-box; width: 100%; min-height: 56px; margin-top: 12px;
+  border: 1px solid #1a2f61; border-radius: 4px; background: #264387; color: #fff;
+  font-family: "Barlow Semi Condensed", Inter, sans-serif;
+  font-weight: 700; font-size: 20px; letter-spacing: .06em; text-transform: uppercase;
+  cursor: pointer;
+}
+.docs-unlock:focus-visible { outline: 3px solid #F0A846; outline-offset: 2px; }
+.docs-unlock[disabled] { background: #5b6478; border-color: #5b6478; }
+.docs-err {
+  margin-top: 12px; padding: 10px 12px;
+  border: 1px solid #1a2f61; border-left: 6px solid #F0A846; border-radius: 4px;
+  background: #fff; color: #1a2f61;
+  font-family: "Barlow Semi Condensed", Inter, sans-serif;
+  font-weight: 700; font-size: 18px; letter-spacing: .04em; text-transform: uppercase;
+}
+.docs-err[hidden] { display: none; }
+.docs-lockrow { display: flex; justify-content: flex-end; margin-top: 10px; }
+.docs-lockbtn {
+  min-height: 48px; min-width: 120px; padding: 0 20px;
+  border: 1px solid #1a2f61; border-radius: 4px; background: #fff; color: #1a2f61;
+  font-family: "Barlow Semi Condensed", Inter, sans-serif;
+  font-weight: 700; font-size: 18px; letter-spacing: .05em; text-transform: uppercase;
+  cursor: pointer;
+}
