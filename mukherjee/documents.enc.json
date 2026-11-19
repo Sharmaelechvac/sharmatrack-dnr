@@ -1,0 +1,10 @@
+{
+  "format": "sharma-enc-v1",
+  "kdf": "PBKDF2-SHA256",
+  "hash": "SHA-256",
+  "iterations": 600000,
+  "cipher": "AES-GCM-256",
+  "salt": "gkzy0sHzpZQQRiKl6cmHeA==",
+  "iv": "znGjCdVycyBO7mmM",
+  "ciphertext": "ILCifpBQeEyZdOwGsTfiRUfhW3+4H5vpXN/fK44nUw0y1NzmugfbBPYLCmd2ks6T51/Yj76UtAh/4D31V+OrhI5S+gxiyyKf8XTeheJUB3h2dnEMiE6LBSCvM2K+u3NJ3pDREsJN4IgWLcXEuvsyK95GlQfn1VyorPkOX94PxMolHll0mDIGzVaWA1yQCoVNXRDH1Ibbe8Voc96Uu7Tg1SZJ8AD4lwFksEB9L9iSEf5yidKeSau9D4jtU4DdZ/eBa9M4QQgW8wxVSphONa5HxKa3c3kRdbxpk36OptfmOr9Kzsgojrgln6lo/GYGKv3H9VLkyzfVrgD9uhnzym574E3hg5QZ7Jh9dQko5sm8ZoBYFsSbkGNsQUiedbwGaffRYCP4S3OhpKOuBYtLB+u8fu3Fx46tLRcVxqqS4OkT6cEIjmGMMj8PFMjtW07WeqDmCGh1oFiU8DONwPSlK998ZqKDHjeqPOe5tZZGgT/rz3Nfqa/+ar+cyL6cy4gAUshCol7h0/RiZI6q+qGP/Wl0Rh98RGZ2"
+}
