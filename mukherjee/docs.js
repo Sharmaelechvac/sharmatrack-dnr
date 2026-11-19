@@ -1,11 +1,16 @@
 /* SHARMATRACK — Job Documents tab renderer (Phase 1, 2026-11-19).
-   Reads docs.json relative to this job page (GitHub Pages-safe, same
-   pattern as seed-photos.json) and renders the five document sections,
-   newest first. If docs.json is missing or unreadable, every section
-   renders its empty state — the rest of the page is never affected. */
+   Architecture (Steve Jobs tech review): document CONTENTS never live in
+   this repo. The tab renders from files.json in this folder — a small
+   per-job file LIST (name, section, added_by, added_at, storage key) —
+   and each entry opens the file from the crew app's own storage:
+     https://sharmatrack-crew.pages.dev/api/photos/file?key=<storage key>
+   If files.json is missing or unreadable, every section renders its
+   empty state — the rest of the page is never affected. */
 (function () {
   var root = document.getElementById("docs-root");
   if (!root) return;
+
+  var STORAGE_BASE = "https://sharmatrack-crew.pages.dev";
 
   var SECTIONS = [
     { key: "plans", label: "Plans" },
@@ -58,13 +63,16 @@
         body = '<p class="docs-empty">No documents on file yet</p>';
       } else {
         body = rows.map(function (e) {
-          var href = "docs/" + encodeURIComponent(s.key) + "/" +
-            encodeURIComponent(e.filename || "");
-          var meta = esc(e.filename || "") + fmtSize(e.bytes) +
+          var meta = esc(e.name || "") + fmtSize(e.bytes) +
             "<br>Added by " + esc(e.added_by || "Jarvis") + " · " + fmtDate(e.added_at);
-          return '<a class="docs-item" href="' + href + '" target="_blank" rel="noopener">' +
-            '<span class="docs-title">' + esc(e.title || e.filename || "Document") + "</span>" +
-            '<span class="docs-meta">' + meta + "</span></a>";
+          var inner =
+            '<span class="docs-title">' + esc(e.title || e.name || "Document") + "</span>" +
+            '<span class="docs-meta">' + meta + "</span>";
+          if (e.key) {
+            var href = STORAGE_BASE + "/api/photos/file?key=" + encodeURIComponent(e.key);
+            return '<a class="docs-item" href="' + href + '" target="_blank" rel="noopener">' + inner + "</a>";
+          }
+          return '<span class="docs-item">' + inner + "</span>";
         }).join("");
       }
       return '<div class="docs-sec"><h3 class="docs-sec-h">' + esc(s.label) + "</h3>" + body + "</div>";
@@ -72,7 +80,7 @@
   }
 
   render([]); // empty states first, so the tab is never blank or broken
-  fetch("docs.json", { cache: "no-cache" })
+  fetch("files.json", { cache: "no-cache" })
     .then(function (r) { return r.ok ? r.json() : []; })
     .then(function (rows) { render(Array.isArray(rows) ? rows : []); })
     .catch(function () { /* keep the empty states */ });
