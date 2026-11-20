@@ -250,8 +250,6 @@ details.section li{margin-bottom:8px}
 .tradeswitch button{flex:1;border:2px solid #12325e;background:#eaf3fb;color:#12325e;border-radius:14px;padding:12px 8px;font-size:1.15rem;font-weight:900;cursor:pointer;transition:background .15s,color .15s,transform .1s}
 .tradeswitch button:active{transform:scale(.97)}
 .tradeswitch button.on{background:#12325e;color:#fff;border-color:#12325e;box-shadow:var(--sh-pop)}
-html[data-theme="dark"] .tradeswitch button{background:#10283d;color:#bcd8f5;border-color:#2a4d6e}
-html[data-theme="dark"] .tradeswitch button.on{background:#12325e;color:#fff;border-color:#12325e}
 .tradeswitch button{display:flex;align-items:center;justify-content:center;gap:10px}
 .trade-ic{height:30px;width:auto;background:#fff;border-radius:8px;padding:2px 5px}
 
@@ -397,73 +395,6 @@ body:has(.wrap.home){background:#fff}
   text-align:center;font-weight:700;padding:22px 16px;margin:10px auto;max-width:560px}
 .duo-exjtxt{text-align:center;align-items:center}
 
-/* === THEME CHOICE — dark or white background (Sanjay 2026-11-07) ===
-   Default is the white look above. The toggle in the language bar sets
-   data-theme="dark" on <html> and remembers the choice on the device
-   (localStorage "sharma-theme", shared across every page of the app). */
-.theme-toggle{margin-left:4px}
-html[data-theme="dark"] body{background:
-  radial-gradient(120% 480px at 50% -80px,rgba(47,127,196,.22),rgba(47,127,196,0) 70%),
-  linear-gradient(180deg,#0d2136,#081726);background-attachment:fixed;color:#e9f2fa}
-html[data-theme="dark"] body:has(.wrap.home){background:#0a1a2b}
-html[data-theme="dark"] .section,
-html[data-theme="dark"] .progress,
-html[data-theme="dark"] .gear .card,
-html[data-theme="dark"] .coc-sec{background:#10283d;border-color:#1e3f5c;color:#e9f2fa;
-  box-shadow:0 2px 10px rgba(0,0,0,.25),0 14px 34px rgba(0,0,0,.3)}
-html[data-theme="dark"] .capcard{background:#0c2236;border-color:#1e3f5c}
-html[data-theme="dark"] .capcard .cap{color:#f2f7fc}
-html[data-theme="dark"] .capcard .status{color:#93aec7}
-html[data-theme="dark"] .capcard .status.has{background:#173d5e;color:#bcd8f5;border-color:#2a4d6e}
-html[data-theme="dark"] .capdef{background:#0d2236;color:#93aec7;border-color:#1e3f5c}
-html[data-theme="dark"] .hero{background:linear-gradient(135deg,#0058a3,#004585 70%);color:#fff;
-  border-color:rgba(255,255,255,.09);box-shadow:0 12px 30px rgba(3,12,28,.4)}
-html[data-theme="dark"] .hero .city{color:#cfe0f2}
-html[data-theme="dark"] .hero .lic{color:#cfe0f2}
-html[data-theme="dark"] .hero .meta span{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);color:#fff}
-html[data-theme="dark"] .hero .meta b{color:#fff}
-html[data-theme="dark"] .hero h1{color:#fff}
-html[data-theme="dark"] .jobbtn{background:#10283d;border-color:#1e3f5c;color:#e9f2fa}
-html[data-theme="dark"] .jobbtn .a{color:#8fc0ef}
-html[data-theme="dark"] .jobbtn .b,html[data-theme="dark"] .jobbtn .b2{color:#93aec7}
-html[data-theme="dark"] .jobbtn .prog{background:#173d5e;color:#bcd8f5;border-color:#2a4d6e}
-html[data-theme="dark"] .jobbtn .chip.st0{background:#1c3d5a;color:#bcd8f5}
-html[data-theme="dark"] .home h2,html[data-theme="dark"] .launch h2{color:#8fc0ef}
-html[data-theme="dark"] .langbar .lbl{color:#8fc0ef}
-html[data-theme="dark"] .langbar button{background:#10283d;color:#bcd8f5;border-color:#2a4d6e}
-html[data-theme="dark"] .langbar button.on{background:#0058a3;color:#fff;border-color:#0058a3}
-html[data-theme="dark"] .phasetabs button{background:#10283d;color:#bcd8f5;border-color:#2a4d6e}
-html[data-theme="dark"] .phasetabs button.on{background:#0058a3;color:#fff;border-color:#0058a3}
-html[data-theme="dark"] .searchbar input{background:#10283d;color:#e9f2fa;border-color:#2a4d6e}
-html[data-theme="dark"] .prints a{background:linear-gradient(180deg,#12304a,#0e2a42);color:#8fc0ef;border-color:#2a4d6e}
-html[data-theme="dark"] .capcard .btns .gal{background:#10283d;color:#bcd8f5;border-color:#2f7fc4}
-html[data-theme="dark"] .gear .model{background:#0d2236;border-color:#1e3f5c;color:#e9f2fa}
-html[data-theme="dark"] .sched-hint{border-color:#1e3f5c}
-html[data-theme="dark"] .sched-table .sched-sec td{background:#0d2236;color:#8fc0ef}
-html[data-theme="dark"] #jm-form input,html[data-theme="dark"] #jm-form select{background:#0c2236;color:#e9f2fa;border-color:#2a4d6e}
-html[data-theme="dark"] #jm-form label{color:#93aec7}
-html[data-theme="dark"] .jmedit{background:#0e2a42;color:#bcd8f5;border-color:#2a4d6e}
-html[data-theme="dark"] .jm-btns button{background:#10283d;color:#e9f2fa;border-color:#2a4d6e}
-html[data-theme="dark"] .jm-rows dt{color:#93aec7}
-html[data-theme="dark"] .section h3{color:#93aec7}
-html[data-theme="dark"] .progress .ps,html[data-theme="dark"] .upnote,html[data-theme="dark"] .tiles figcaption{color:#93aec7}
-html[data-theme="dark"] .notconn{background:#0e2a42;color:#bcd8f5;border-color:#2f7fc4}
-html[data-theme="dark"] .tiles img,html[data-theme="dark"] .tiles video{background:#1c3d5a}
-html[data-theme="dark"] .tile .lb{color:#e9f2fa}
-html[data-theme="dark"] .tile .up,html[data-theme="dark"] .launch-head .date{color:#7d99b5}
-html[data-theme="dark"] .launch-head{color:#e9f2fa}
-html[data-theme="dark"] .home-lic,html[data-theme="dark"] .dev-credit{color:#7d99b5}
-html[data-theme="dark"] .builder-ed{color:#7db3e8}
-html[data-theme="dark"] .empty-houses{background:#0e2a42;color:#93aec7;border-color:#2a4d6e}
-html[data-theme="dark"] .coc-body{background:#081726}
-html[data-theme="dark"] .coc-nav a{background:#10283d;color:#bcd8f5;border-color:#2a4d6e}
-html[data-theme="dark"] .jobchip.home{background:#10283d;color:#bcd8f5;border-color:#2a4d6e}
-/* the Sharma logo art has a white ground baked in — on dark it sits as a
-   clean white plaque instead of a floating rectangle */
-html[data-theme="dark"] .duo-sharma{border-radius:14px}
-html[data-theme="dark"] .st-footer{background:#fff;border-radius:16px;padding:12px 10px 8px;max-width:520px}
-html[data-theme="dark"] .app-hero .app-name{color:#fff}
-
 /* ——— Design softening pass (2026-11-09, Sanjay: "it feels so blocky") ———
    Pills instead of boxes, borders traded for soft shadows, more air. */
 .section{border:none;border-radius:26px;padding:20px 18px;box-shadow:0 2px 8px rgba(8,22,44,.05),0 18px 40px rgba(8,22,44,.09)}
@@ -479,20 +410,15 @@ html[data-theme="dark"] .app-hero .app-name{color:#fff}
 .tradeswitch{background:rgba(0,69,133,.08);border-radius:999px;padding:5px;gap:5px;margin-bottom:12px}
 .tradeswitch button{border:none;border-radius:999px;background:transparent;box-shadow:none;color:var(--navy)}
 .tradeswitch button.on{background:#12325e;color:#fff;box-shadow:0 6px 16px rgba(10,35,70,.35)}
-html[data-theme="dark"] .tradeswitch{background:rgba(120,180,240,.12)}
-html[data-theme="dark"] .tradeswitch button{background:transparent;color:#bcd8f5;box-shadow:none}
-html[data-theme="dark"] .tradeswitch button.on{background:#12325e;color:#fff;box-shadow:0 6px 16px rgba(0,0,0,.45)}
 /* phase tabs: soft pills, no hard outline */
 .phasetabs{gap:7px}
 .phasetabs button{border:none;border-radius:999px;background:rgba(0,69,133,.08);color:var(--navy);box-shadow:none;padding:11px 6px}
 .phasetabs button.on{background:#0058a3;color:#fff;box-shadow:0 6px 16px rgba(0,88,163,.35)}
-html[data-theme="dark"] .phasetabs button{background:rgba(120,180,240,.12);color:#bcd8f5}
-html[data-theme="dark"] .phasetabs button.on{background:#0058a3;color:#fff}
 
 /* ——— All-caps Archivo treatment (2026-11-09, Sanjay: "proper grammar — get an all caps font") ———
    Archivo throughout; UI chrome displays in caps with light tracking.
    Underlying text keeps its proper casing — display transform only. */
-body{font-family:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
 h1,h2,h3,.hero,.jobbar,.tradeswitch button,.phasetabs button,.capcard .cap,
 .capcard .btns label,.jm-rows dt,.pill,.section h2,.prints a,.gear .card h3,
 .otherbar button,.langbar button,.jmedit,.jmsave{text-transform:uppercase;letter-spacing:.03em}
@@ -508,7 +434,6 @@ h1,h2,h3,.hero,.jobbar,.tradeswitch button,.phasetabs button,.capcard .cap,
 .section h2{position:relative;padding-left:13px}
 .section h2::before{content:"";position:absolute;left:0;top:.16em;bottom:.16em;width:4px;border-radius:2px;background:linear-gradient(180deg,#f0b95a,#e8a33d)}
 .capcard .status:not(.has){background:rgba(232,163,61,.15);color:#96690f;border:1px solid rgba(232,163,61,.38);border-radius:999px;padding:2px 11px;font-weight:700}
-html[data-theme="dark"] .capcard .status:not(.has){background:rgba(232,163,61,.18);color:#e8c37a;border-color:rgba(232,163,61,.4)}
 .mapsbtn{border-radius:999px;background:linear-gradient(135deg,var(--brand2),var(--brand))}
 
 /* ——— TUG free photos (2026-11-09, Sanjay: no preset caption entries on TUG —
@@ -521,8 +446,6 @@ html[data-theme="dark"] .capcard .status:not(.has){background:rgba(232,163,61,.1
 .freecap .btns label:active{transform:scale(.97)}
 .freecap .btns .cam{background:linear-gradient(135deg,var(--brand2),var(--brand));box-shadow:0 8px 18px rgba(0,88,163,.3)}
 .freecap .btns .gal{background:#fff;color:#004585;border:1.5px solid #0058a3;box-shadow:0 8px 18px rgba(0,88,163,.12)}
-html[data-theme="dark"] .freecap .btns .gal{background:#10283d;color:#bcd8f5;border-color:#2f7fc4}
-html[data-theme="dark"] .freecap input[type=text]{background:#10283d;border-color:#2a4d6e;color:#e8f1fa}
 #tug-tiles .tiles figcaption b{display:block;font-size:.98rem;color:var(--ink);margin-bottom:1px}
 #tug-tiles .tiles figcaption span{font-size:.82rem}
 
@@ -544,3 +467,10 @@ body.lb-open{overflow:hidden}
 /* Address clarity (Sanjay, 2026-11-10): never cut the address off in the sticky bar; city line dark + bold */
 .jobbar .jb-addr{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.15}
 .hero .city{color:#004585;font-weight:700}
+
+/* Builder logo chip (company-logos workstream, 2026-11-19): the real logo
+   file covers a navy initials badge; if the file is missing the badge
+   shows, so a real logo can be dropped in later with no markup change. */
+.blogo { position:relative; display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:8px; background:#0058a3; vertical-align:-9px; margin-right:7px; overflow:hidden; flex:0 0 auto; }
+.blogo__init { color:#fff; font-weight:800; font-size:13px; letter-spacing:.02em; }
+.blogo img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#fff; }

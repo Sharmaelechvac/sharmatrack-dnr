@@ -20,19 +20,19 @@
     en: {
       language: "Language", byLine: "by Sharma Electric & HVAC", builderEd: "Builder edition",
       crewJobs: "Jobs", employees: "Employees",
-      coc: "Code of Conduct →", searchPh: "Search address, city, builder…",
-      st0: "Not started", st1: "In progress", st2: "Complete"
+      coc: "Code of Conduct", searchPh: "Search address, city, builder…",
+      st0: "Not started", st1: "In progress", st2: "Done"
     },
     es: {
       language: "Idioma", byLine: "por Sharma Electric & HVAC", builderEd: "Edição do construtor", builderEd: "Edición del constructor",
       crewJobs: "Trabajos", employees: "Empleados",
-      coc: "Código de conducta →", searchPh: "Buscar dirección, ciudad, constructor…",
-      st0: "Sin empezar", st1: "En progreso", st2: "Completo"
+      coc: "Código de conducta", searchPh: "Buscar dirección, ciudad, constructor…",
+      st0: "Sin empezar", st1: "En progreso", st2: "Terminado"
     },
     pt: {
       language: "Idioma", byLine: "por Sharma Electric & HVAC",
       crewJobs: "Trabalhos", employees: "Funcionários",
-      coc: "Código de conduta →", searchPh: "Buscar endereço, cidade, construtora…",
+      coc: "Código de conduta", searchPh: "Buscar endereço, cidade, construtora…",
       st0: "Não iniciado", st1: "Em andamento", st2: "Concluído"
     }
   };
@@ -62,11 +62,14 @@
       var prog = card.querySelector("[data-prog]");
       var chip = card.querySelector("[data-chip]");
       if (!prog || !chip) return;
-      if (n == null) { prog.textContent = "—/" + ROUGH_EN.length; chip.hidden = true; return; }
-      prog.textContent = n + "/" + ROUGH_EN.length;
+      if (n == null) { prog.textContent = "—/" + ROUGH_EN.length; prog.style.display = ""; chip.hidden = true; return; }
       chip.hidden = false;
       chip.className = "chip " + (n === 0 ? "st0" : n >= ROUGH_EN.length ? "st2" : "st1");
       chip.textContent = n === 0 ? t().st0 : n >= ROUGH_EN.length ? t().st2 : t().st1;
+      /* one kit status at the endpoints (Steve's review, 2026-11-19);
+         the count shows once work starts */
+      if (n === 0 || n >= ROUGH_EN.length) prog.style.display = "none";
+      else { prog.style.display = ""; prog.textContent = n + "/" + ROUGH_EN.length; }
     });
   }
   function coveredCount(jobId, seedRows, apiRows) {
@@ -77,7 +80,7 @@
   }
   function loadCounts(seedRows) {
     JOBS.forEach(function (id) {
-      fetch("/api/photos?job=" + encodeURIComponent(id))
+      fetch("https://sharmatrack-crew.pages.dev/api/photos?job=" + encodeURIComponent(id))
         .then(function (r) { return r.ok ? r.json() : []; })
         .then(function (rows) {
           counts[id] = coveredCount(id, seedRows, Array.isArray(rows) ? rows : []);
@@ -117,4 +120,7 @@
   }
   renderText();
   loadSeedsThenCounts();
+
+  /* One-page shell hook: pull-to-refresh re-runs the same data loads. */
+  window.__hubRefresh = function () { loadSeedsThenCounts(); return Promise.resolve(); };
 })();

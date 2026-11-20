@@ -203,19 +203,6 @@
   var jobEl = document.querySelector("[data-job]");
   if (!jobEl) return; // only job pages run this script's render logic
   var JOB = window.JOB_PAGE || {};
-  var themeBtn = document.querySelector(".theme-toggle");
-  function paintThemeBtn() { if (themeBtn) themeBtn.textContent = document.documentElement.getAttribute("data-theme") === "dark" ? "White" : "Dark"; }
-  if (themeBtn) themeBtn.addEventListener("click", function () {
-    if (document.documentElement.getAttribute("data-theme") === "dark") {
-      document.documentElement.removeAttribute("data-theme");
-      try { localStorage.setItem("sharma-theme", "white"); } catch (e) {}
-    } else {
-      document.documentElement.setAttribute("data-theme", "dark");
-      try { localStorage.setItem("sharma-theme", "dark"); } catch (e) {}
-    }
-    paintThemeBtn();
-  });
-  paintThemeBtn();
   var lang = localStorage.getItem("crew-lang") || "en";
   if (!UI[lang]) lang = "en";
   var trade = localStorage.getItem("crew-trade-" + JOB.id) || "elec";
@@ -235,8 +222,8 @@
   function prefixFor(p) { return p === "trim" ? "tcap-" : p === "tug" ? "gcap-" : p === "ug" ? "ucap-" : p === "hrough" ? "hrcap-" : p === "htrim" ? "htcap-" : "cap-"; }
 
   /* ---------- Photo backend: Netlify Function + Blobs, same origin ---------- */
-  var API = "/api/photos";
-  var META_API = "/api/jobmeta";
+  var API = "https://sharmatrack-crew.pages.dev/api/photos";
+  var META_API = "https://sharmatrack-crew.pages.dev/api/jobmeta";
   /* Directory this script was loaded from = the app root. Seed files live
      there; resolving them against it keeps them working when the site is
      served from a subpath (e.g. GitHub Pages project sites). */
@@ -324,7 +311,7 @@
         var im = new Image();
         im.onload = function () { res(im); };
         im.onerror = function () { res(null); };
-        im.src = "/logo.png";
+        im.src = SCRIPT_BASE + "logo.png";
       });
     }
     return logoImgPromise;
@@ -803,4 +790,10 @@
   fetchPhotos();
   fetchSeeds();
   fetchJobMeta();
+
+  /* One-page shell hook: pull-to-refresh re-runs the same data loads. */
+  window.__jobRefresh = function () {
+    fetchPhotos(); fetchSeeds(); fetchJobMeta();
+    return Promise.resolve();
+  };
 })();
