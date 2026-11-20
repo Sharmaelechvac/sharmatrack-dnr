@@ -1,0 +1,13 @@
+/* macOS wide-screen look (Sanjay, 2026-11-19) — presentation only, >=960px.
+   POLISH-ONLY, HUB SCREEN ONLY. This app has no persistent navigation
+   (SK.stack hub -> pushed job screen; no .sk-tabbar), and the pushed job
+   screen carries the Documents flow, which must stay byte-identical:
+   every rule below is scoped to the root hub page
+   (.sk-page:not(.sk-page--pushed)) so nothing in here can reach the
+   Mukherjee job screen or its Documents tab. No global selectors, no
+   ::selection. Below 960px nothing changes at all. CSS only. */
+@media (min-width:960px){
+  .sk-page:not(.sk-page--pushed) .wrap{ max-width:1100px; }
+  .sk-page:not(.sk-page--pushed) .jobbtn:hover{ background:var(--sk-surface-2, #F7F8FB); }
+  .sk-page:not(.sk-page--pushed) .sk-row:hover{ background:var(--sk-fill-2); }
+}
