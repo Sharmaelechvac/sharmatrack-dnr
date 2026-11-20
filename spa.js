@@ -1,3 +1,9 @@
+/* SHARMATRACK CORE — unified shell for every builder edition.
+   Source of truth: ~/workspace/sharmatrack-core/shared/spa.js — edit there,
+   then run tools/sync.py; never fork this file per edition again.
+   Edition differences are data: window.TRACK_TITLES (EXJ group titles),
+   #docs-root fragments (DNR Documents rebase, inert elsewhere).
+
 /* SHARMATRACK — one-page app shell (kit v1.2 SK.stack).
    The hub (index) is rendered from the page's own markup (#hub-tpl).
    Every other screen is fetched from its existing URL, its content
@@ -14,6 +20,9 @@
     backLabel: "Jobs",
     logo: "sharmatrack-mark-blue.png",
     hubTemplate: "hub-tpl",
+    /* per-edition screen titles (EXJ group pages) come from the hub's
+       window.TRACK_TITLES config — see editions.json; empty elsewhere */
+    titles: (window.TRACK_TITLES || {}),
     /* the kit owns the header trail once SK.stack starts (setHeader
        replaces it), so the globe + More buttons ride along in every
        setHeader call, identical markup so the kit does not re-render */
@@ -69,6 +78,7 @@
   }
   function titleFor(key) {
     if (key === "more") return "More";
+    if (CFG.titles && CFG.titles[key]) return CFG.titles[key];
     var a = document.querySelector('a[href="#/' + key + '"]');
     if (a) {
       var t = (a.textContent || "").replace(/\s+/g, " ").trim();
@@ -240,7 +250,7 @@
     parts.forEach(function (p) { holder.appendChild(p); });
     holder.querySelectorAll("script").forEach(function (s) { s.remove(); });
     rewriteUrls(holder, dir);
-    var h1 = holder.querySelector("h1");
+    var h1 = holder.querySelector("h1") || holder.querySelector(".builder-ed");
     return {
       html: styles + holder.innerHTML,
       scripts: scripts,

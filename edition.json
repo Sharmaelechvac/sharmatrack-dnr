@@ -1,0 +1,28 @@
+{
+  "app": "SHARMATRACK",
+  "edition": "dnr",
+  "builder": "DNR Contracting",
+  "builderLogo": null,
+  "builderLogoStatus": "LOGO NEEDED \u2014 no real DNR logo anywhere in the workspace; temporary monogram tile (DNR) in use",
+  "trades": [
+    "Electrical"
+  ],
+  "liveUrl": "https://sharmaelechvac.github.io/sharmatrack-dnr/",
+  "repo": "sharmaelechvac/sharmatrack-dnr",
+  "shell": {
+    "macos": "dnr-hub",
+    "skBridge": "pinned"
+  },
+  "shellSource": "~/workspace/sharmatrack-core (edit the shell there, run tools/sync.py \u2014 never fork shell files here)",
+  "houses": [
+    {
+      "dir": "mukherjee",
+      "jobId": "mukherjee",
+      "address": "4008 W El Prado Blvd",
+      "city": "Tampa, FL",
+      "trades": [
+        "Electrical"
+      ]
+    }
+  ]
+}
